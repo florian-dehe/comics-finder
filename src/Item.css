@@ -1,0 +1,9 @@
+.comicItem {
+    text-align: center;
+    padding: 5px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.comicItem img {
+    max-height: 400px;
+}
