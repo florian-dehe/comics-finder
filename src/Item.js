@@ -3,14 +3,17 @@ import "./Item.css"
 function Item({data}) {
     return ( <div className="comicItem">
         <div>
-            <img src={data.image} alt="Comic item"/>
+            <img src={data.cover} alt="Comic item"/>
         </div>
         <div>
-            <strong>Title:</strong> <span>{data.title} </span>
+            <span>{data.volume}.{data.title}</span>
+        </div>
+        <div>
+            <span>{data.serie}</span>
         </div>
         <div>
             <strong>Collection:</strong> <span>{data.collection}</span>
-        </div> 
+        </div>
     </div>)
 }
 

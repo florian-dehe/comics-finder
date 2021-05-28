@@ -6,11 +6,10 @@ function Grid({comics}) {
     return (
         <div className="grid">
             {comics.map(comic => (
-                <Item data={comic.data}/>
+                <Item data={comic}/>
             ))}
         </div>
     )
 }
-
 
 export default Grid;
