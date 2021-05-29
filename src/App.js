@@ -1,24 +1,31 @@
 import Search from "./Search";
 import Grid from "./Grid";
 import { useState, useEffect } from "react";
+import axios from 'axios';
 
 import "./App.css";
 
-const apiURI = "http://localhost:5000/comics";
+import conf from './conf';
 
-const axios = require('axios');
+async function fetch_conf() {
+    const settings = await conf;
+    return settings;
+}
 
 function App() {
   const [comics, setComics] = useState([]);
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    axios.get(apiURI).then( res => {
-      const comics = res.data.comics;
-      setComics(comics);
-    })    
+    fetch_conf()
+        .then( x => x.comics_api_uri)
+        .then( x => axios.get(x) )
+        .then( res => {
+                const comics = res.data.comics;
+                setComics(comics);
+        });
   }, []);
-  
+
   const filteredComics = search.length === 0 ? comics :
             comics.filter(  comic => comic.title.toLowerCase().includes(search.toLowerCase())
                             ||  comic.collection.toLowerCase().includes(search.toLowerCase())
