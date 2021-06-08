@@ -10,7 +10,7 @@ function Grid({comics}) {
     return (
         <div className="grid">
             {comics.map(comic => (
-                <Item data={comic}/>
+                <Item key={comic.id} data={comic}/>
             ))}
         </div>
     )
