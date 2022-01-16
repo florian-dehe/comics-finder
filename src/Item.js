@@ -1,18 +1,19 @@
 import "./Item.css"
 
+// The comic item to show.
 function Item({data}) {
     return ( <div className="comicItem">
         <div>
-            <img src={data.cover} alt="Comic item"/>
+            <img src={data.image_uri} alt="Comic item"/>
         </div>
         <div>
             <span>{data.volume}.{data.title}</span>
         </div>
         <div>
-            <span>{data.serie}</span>
+            <i>{data.series_name}</i>
         </div>
         <div>
-            <strong>Collection:</strong> <span>{data.collection}</span>
+            <strong>Collection:</strong> <span>{data.col_name}</span>
         </div>
     </div>)
 }

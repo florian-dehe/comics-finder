@@ -1,5 +1,6 @@
 import "./Search.css"
 
+// The search bar.
 function Search({search, setSearch}) {
     return (
             <input className="searchBar"

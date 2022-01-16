@@ -2,6 +2,7 @@ import Item from "./Item"
 
 import "./Grid.css"
 
+// The grid for the comics view.
 function Grid({comics}) {
     if (comics.length === 0) {
         return <div>No data to display.</div>
