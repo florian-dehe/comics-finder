@@ -1,20 +1,19 @@
 import Item from "./Item"
-
-import "./Grid.css"
+import { Grid, CircularProgress } from "@mui/material";
 
 // The grid for the comics view.
-function Grid({comics}) {
+function ComicsGrid({comics}) {
     if (comics.length === 0) {
-        return <div>No data to display.</div>
+        return <CircularProgress />
     }
 
     return (
-        <div className="grid">
+        <Grid container margin={2} sx={{ width: 0.9 }}>
             {comics.map(comic => (
                 <Item key={comic.id} data={comic}/>
             ))}
-        </div>
+        </Grid>
     )
 }
 
-export default Grid;
+export default ComicsGrid;

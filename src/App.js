@@ -19,10 +19,10 @@ function App() {
   // Fetching conf and use the API address to make a GET request.
   useEffect(() => {
     fetch_conf()
-        .then( x => x.comics_api_uri)
-        .then( x => axios.get(x) )
+        .then( conf => axios.get(conf.comics_api_uri + '/all') )
         .then( res => {
-                const comics = res.data.comics;
+                console.log(res.data);
+                const comics = res.data;
                 setComics(comics);
         })
         .catch(function (err) {
@@ -30,12 +30,17 @@ function App() {
         });
   }, []);
 
+  
+  /*
+  Change to the method according to Material's callbacks
+
   // Filter the comics with the research bar
   const filteredComics = search.length === 0 ? comics :
             comics.filter(  comic => comic.title.toLowerCase().includes(search.toLowerCase())
                             ||  comic.collection.toLowerCase().includes(search.toLowerCase())
                             ||  comic.serie.toLowerCase().includes(search.toLowerCase())
                         );
+  */
 
   // The React rendered view.
   return <div>
@@ -43,7 +48,7 @@ function App() {
     <div className="searchBarBox">
         <Search search={search} setSearch={setSearch}/>
     </div>
-    <Grid comics={filteredComics}/>
+    <Grid comics={comics}/>
   </div>
 }
 
